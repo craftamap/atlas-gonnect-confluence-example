@@ -1,0 +1,22 @@
+{
+    "profiles": {
+        "dev": {
+            "baseUrl": "https://your.ngrok.com",
+            "port": 8080,
+            "store": {
+                "type": "sqlite3",
+                "databaseUrl": "db.sqlite"
+            },
+            "validateDescriptor": true
+        },
+        "prod": {
+            "baseUrl": "https://example.com",
+            "port": 8090,
+            "store": {
+                "type": "sqlite3",
+                "databaseUrl": "db.sqlite"
+            }
+        }
+    },
+    "product": "confluence"
+}

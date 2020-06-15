@@ -1,0 +1,134 @@
+{
+    "key": "confluence-connect-example",
+    "name": "Example Atlassian Connect Confluence Add-on",
+    "description": "Provides examples of how to use Atlassian Connect extension points in Confluence.",
+    "version": "2",
+    "baseUrl": "{{ .BaseUrl }}",
+    "vendor": {
+        "name": "Atlassian",
+        "url": "http://www.atlassian.com"
+    },
+    "lifecycle": {
+        "installed": "/installed",
+        "uninstalled": "/uninstalled"
+    },
+    "authentication": {
+        "type": "jwt"
+    },
+    "modules": {
+        "generalPages": [
+            {
+                "key": "hello-world",
+                "url": "/hello-world?spaceKey=${space.key}",
+                "name": {
+                    "value": "Hello World (Logged In)"
+                },
+                "conditions": [{
+                    "condition": "user_is_logged_in"
+                }]
+            },
+            {
+                "key": "hello-world-anon",
+                "url": "/hello-world?spaceKey=${space.key}",
+                "name": {
+                    "value": "Hello World (Anonymous)"
+                },
+                "conditions": [{
+                    "condition": "user_is_logged_in",
+                    "invert": true
+                }]
+            }
+        ],
+        "staticContentMacros": [
+            {
+                "name": {
+                    "value": "Static Macro (no editor)"
+                },
+                "description": {
+                    "value": "Choose a sport"
+                },
+                "url": "/macro?sport={sport}",
+                "key": "static-sport-macro",
+                "renderingMethod": "post",
+                "categories": ["development"],
+                "parameters": [
+                    {
+                        "identifier": "sport",
+                        "name": {
+                            "value": "Favourite Sport"
+                        },
+                        "type": "enum",
+                        "values": [
+                            "nfl", "baseball", "basketball", "football", "golf", "tennis"
+                        ]
+                    }
+                ]
+            }
+            ,
+            {
+                "name": {
+                    "value": "Static Macro (with editor)"
+                },
+                "description": {
+                    "value": "Choose a sport"
+                },
+                "url": "/macro?pageId={page.id}&spaceKey={space.key}&sport={sport}",
+                "key": "static-sport-macro-with-editor",
+                "renderingMethod": "post",
+                "categories": ["development"],
+                "outputType": "block",
+                "bodyType": "none",
+                "editor": {
+                    "url": "/editor",
+                    "editTitle": {
+                        "value": "Edit your favourite sport"
+                    },
+                    "insertTitle": {
+                        "value": "Choose your favourite sport"
+                    },
+                    "height": "600px",
+                    "width": "600px"
+                },
+                "imagePlaceholder": { "url": "/images/icons/icon.png" }
+            }
+        ],
+        "dynamicContentMacros": [
+            {
+                "name": {
+                    "value": "Macro whose content is rendered by an iframe"
+                },
+                "description": {
+                    "value": "Render a macro in a page with an iframe"
+                },
+                "key": "dynamic-sport-macro",
+                "url": "/macro-page?pageId={page.id}&spaceKey={space.key}",
+                "categories": ["development"],
+                "documentation": {
+                    "url": "https://developer.atlassian.com/static/connect/docs"
+                },
+                "outputType": "inline",
+                "bodyType": "rich-text",
+                "height": "80px",
+                "width": "200px",
+                "icon": {
+                    "url": "/images/icons/icon.png",
+                    "height": 16,
+                    "width": 16
+                },
+                "alias": "dynamic-macro",
+                "editor": {
+                    "url": "/editor",
+                    "editTitle": {
+                        "value": "Edit your favourite sport"
+                    },
+                    "insertTitle": {
+                        "value": "Choose your favourite sport"
+                    },
+                    "height": "600px",
+                    "width": "600px"
+                },
+                "imagePlaceholder": { "url": "/images/icons/icon.png" }
+            }
+        ]
+    }
+}

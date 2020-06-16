@@ -1,0 +1,23 @@
+{{ template "header.html.tmpl" . }}
+
+<button id="asUserButton">Do something as user, please!</button>
+<div id="asUserResult">
+
+</div>
+
+    <script>
+        document.getElementById("asUserButton").addEventListener('click', function(event) {
+            AP.context.getToken(function(token) {
+                console.log("JWT token is:", token);
+                fetch('/api/asUser?jwt='+token)
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                    document.getElementById("asUserResult").innerHTML = data;
+                });
+            })
+        })
+
+    </script>
+
+{{ template "footer.html.tmpl" . }}

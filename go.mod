@@ -3,7 +3,7 @@ module github.com/craftamap/atlas-gonnect-confluence-example
 go 1.16
 
 require (
-	github.com/craftamap/atlas-gonnect v0.1.1
+	github.com/craftamap/atlas-gonnect v0.2.0
 	github.com/felixge/httpsnoop v1.0.2 // indirect
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/gorilla/handlers v1.5.1

@@ -18,6 +18,9 @@
     "scopes": [
         "READ", "WRITE", "ACT_AS_USER"
     ],
+    "apiMigrations": {
+        "signed-install": true
+    },
     "modules": {
         "generalPages": [
             {

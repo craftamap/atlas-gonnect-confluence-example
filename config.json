@@ -1,12 +1,13 @@
 {
     "profiles": {
         "dev": {
-            "baseUrl": "https://your.ngrok.com",
+            "baseUrl": "https://lively.craftam.app",
             "port": 8080,
             "store": {
                 "type": "sqlite3",
                 "databaseUrl": "db.sqlite"
             },
+            "signedInstall": true,
             "validateDescriptor": true
         },
         "prod": {
